@@ -104,12 +104,13 @@ app.delete("/api/books/:id", (req, res) => {
 // Start server on port 3000
 const PORT = 3000;
 
-// Only start server if not running tests
-if (process.env.NODE_ENV !== "test") {
+// Only start server when run directly (NOT during tests)
+if (require.main === module) {
     app.listen(PORT, () => {
         console.log(`Server running on http://localhost:${PORT}`);
     });
 }
+
 
 // Export app for testing
 module.exports = app;
